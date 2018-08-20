@@ -1,6 +1,7 @@
 package net.evenh.protobuf;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy.PropertyNamingStrategyBase;
 import com.hubspot.jackson.datatype.protobuf.ProtobufModule;
 import net.evenh.domain.HelloWorld.HelloRequest;
@@ -47,6 +48,8 @@ public class App {
 
         if (enableWorkaround) {
           builder.propertyNamingStrategy(new WorkaroundStrategy());
+        } else {
+          builder.propertyNamingStrategy(PropertyNamingStrategy.LOWER_CAMEL_CASE);
         }
       };
     }
